@@ -14,11 +14,10 @@ return new class extends Migration
     {
         Schema::create('service_reservations', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
             $table->string('type');
+            $table->string('title');
             $table->text('description');
             $table->string('address');
-            $table->date('delivery_date');
             $table->string('picture_for_clarification');
             $table->timestamps();
         });

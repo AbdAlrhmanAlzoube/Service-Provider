@@ -14,17 +14,18 @@ class ServiceReservation extends Model
 protected $fillable=[
     'user_id',
     'type',
+    'title',
     'description',
     'address',
-    'delivery_date',
     'picture_for_clarification'
 
 ];
 
-public function user():BelongsTo
+public function user(): BelongsTo
 {
     return $this->belongsTo(User::class);
 }
+
 
 }
  
