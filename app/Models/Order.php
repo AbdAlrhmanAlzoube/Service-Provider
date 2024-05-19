@@ -26,7 +26,7 @@ class Order extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function ServiceReservations(): BelongsTo
+    public function serviceReservation(): BelongsTo
     {
         return $this->belongsTo(ServiceReservation::class);
     }

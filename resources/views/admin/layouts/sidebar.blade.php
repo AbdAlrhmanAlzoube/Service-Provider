@@ -33,7 +33,62 @@
         </div>
       </li>
      
-    
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <i class="menu-icon typcn typcn-coffee"></i>
+          <span class="menu-title">Employee</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href={{ route('employees.create') }}>Add employee</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href={{ route('employees.index') }}>List employees</a>
+            </li>
+           
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <i class="menu-icon typcn typcn-coffee"></i>
+          <span class="menu-title">ServiceReservation</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href={{ route('service-reservations.create') }}>Add ServiceReservations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href={{ route('service-reservations.index') }}>List ServiceReservations</a>
+            </li>
+           
+          </ul>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <i class="menu-icon typcn typcn-coffee"></i>
+          <span class="menu-title">Order</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item">
+              <a class="nav-link" href={{ route('orders.create') }}>Add order</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href={{ route('orders.index') }}>List orders</a>
+            </li>
+           
+          </ul>
+        </div>
+      </li>
    
     
     </ul>

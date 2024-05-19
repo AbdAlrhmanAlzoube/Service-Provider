@@ -14,11 +14,13 @@ return new class extends Migration
     {
         Schema::create('service_reservations', function (Blueprint $table) {
             $table->id();
+            // $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
+
             $table->string('type');
             $table->string('title');
             $table->text('description');
             $table->string('address');
-            $table->string('picture_for_clarification');
+            $table->string('picture_for_clarification')->nullable();
             $table->timestamps();
         });
     }
