@@ -39,6 +39,18 @@
                         {{ $user->type }}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <strong>Image:</strong>
+                    </div>
+                    <div class="col-md-8">
+                        @if($user->image)
+                            <img src="{{ asset('storage/' . $user->image) }}" alt="User Image" width="150" height="150">
+                        @else
+                            No image
+                        @endif
+                    </div>
+                </div>
                 <!-- Add more fields here as needed -->
             </div>
         </div>

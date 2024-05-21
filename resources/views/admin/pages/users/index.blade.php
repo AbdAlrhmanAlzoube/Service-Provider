@@ -10,6 +10,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>Image</th> <!-- Add this line -->
                     <th>Name</th>
                     <th>Email</th>
                     <th>Type</th>
@@ -20,6 +21,13 @@
                 @foreach ($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
+                        <td>
+                            @if($user->image)
+                                <img src="{{ asset('storage/' . $user->image) }}" alt="User Image" width="50" height="50">
+                            @else
+                                No image
+                            @endif
+                        </td>
                         <td>{{ $user->first_name }} {{ $user->last_name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->type }}</td>
