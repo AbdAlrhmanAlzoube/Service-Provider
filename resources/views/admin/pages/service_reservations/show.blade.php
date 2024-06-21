@@ -26,19 +26,14 @@
                     <strong>Address:</strong> {{ $serviceReservation->address }}
                 </div>
                 <div class="mb-3">
-                    <strong>Picture for Clarification:</strong>
+                    <strong>Picture</strong>
                     @if($serviceReservation->picture_for_clarification)
                         <img src="{{ asset('storage/' . $serviceReservation->picture_for_clarification) }}" alt="Picture" style="max-width: 100%; height: auto;">
                     @else
                         <p>No picture provided</p>
                     @endif
                 </div>
-                <div class="mb-3">
-                    <strong>Created At:</strong> {{ $serviceReservation->created_at->format('d-m-Y H:i:s') }}
-                </div>
-                <div class="mb-3">
-                    <strong>Updated At:</strong> {{ $serviceReservation->updated_at->format('d-m-Y H:i:s') }}
-                </div>
+
             </div>
             <div class="card-footer">
                 <a href="{{ route('service-reservations.index') }}" class="btn btn-primary">Back to List</a>

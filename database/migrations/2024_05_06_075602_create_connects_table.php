@@ -14,8 +14,11 @@ return new class extends Migration
     {
         Schema::create('connects', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
-            $table->text('message');
+            $table->string('email');
+            $table->string('phone')->nullable();
+            $table->string('subject_type');
+            $table->string('subject');
+            $table->longText('message');
             $table->timestamps();
         });
     }

@@ -20,23 +20,24 @@ class User extends Authenticatable
      */
 
 
-     
+
     protected $fillable = [
         'first_name',
         'last_name',
         'image',
         'email',
+        'phone',
         'password',
         'type'
     ];
 
 
-    
+
     public function ServiceReservations():HasMany
     {
         return $this->hasMany(User::class);
     }
-    
+
 
     /**
      * The attributes that should be hidden for serialization.

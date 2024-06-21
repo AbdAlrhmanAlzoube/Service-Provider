@@ -6,13 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserStoreRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return true;
-    }
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -26,6 +20,7 @@ class UserStoreRequest extends FormRequest
             'last_name' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // example image validation
             'email' => 'required|email|unique:users,email',
+            'phone' => 'required|string|max:10',
             'password' => 'required|string|min:8',
             'type' => 'required|string|max:255',
         ];
