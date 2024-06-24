@@ -14,7 +14,7 @@ class ServiceReservationController extends Controller
     public function index()
     {
         $serviceReservations = ServiceReservation::with('user')->get();
-        // dd($serviceReservations);
+
         return view('admin.pages.service_reservations.index', compact('serviceReservations'));
     }
 
@@ -27,11 +27,11 @@ class ServiceReservationController extends Controller
     public function store(ServiceReservationStoreRequest $request)
     {
         $validatedData = $request->validated();
-        
+
         // Upload picture if provided
-        if ($request->hasFile('picture_for_clarification')) {
-            $picturePath = $request->file('picture_for_clarification')->store('pictures/service_reservations', 'public');
-            $validatedData['picture_for_clarification'] = $picturePath;
+        if ($request->hasFile('picture')) {
+            $picturePath = $request->file('picture')->store('pictures/service_reservations', 'public');
+            $validatedData['picture'] = $picturePath;
         }
 
         $serviceReservation = ServiceReservation::create($validatedData);
@@ -47,11 +47,11 @@ class ServiceReservationController extends Controller
     public function update(ServiceReservationUpdateRequest $request, ServiceReservation $serviceReservation)
     {
         $validatedData = $request->validated();
-        
+
         // Upload picture if provided
-        if ($request->hasFile('picture_for_clarification')) {
-            $picturePath = $request->file('picture_for_clarification')->store('pictures/service_reservations', 'public');
-            $validatedData['picture_for_clarification'] = $picturePath;
+        if ($request->hasFile('picture')) {
+            $picturePath = $request->file('picture')->store('pictures/service_reservations', 'public');
+            $validatedData['picture'] = $picturePath;
         }
 
         $serviceReservation->update($validatedData);

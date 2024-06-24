@@ -1,12 +1,15 @@
 <?php
 
-use App\Http\Controllers\admin\OrderController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\admin\EmployeeController;
+use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\ServiceReservationController;
-
-
+use App\Http\Controllers\admin\UserController;
+use App\Http\Controllers\Customer\ContactController;
+use App\Http\Controllers\Customer\CustomerController;
+use App\Http\Controllers\Customer\LoginController;
+use App\Http\Controllers\Customer\RegisterController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +21,33 @@ use App\Http\Controllers\admin\ServiceReservationController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [CustomerController::class, 'index']);
+Route::get('/shop', [CustomerController::class, 'shop'])->name('view-reservations');
+Route::get('/party/{id}', [CustomerController::class, 'show_party'])->name('show-party');
 
-Route::get('/', function () {
-    return view('admin.dashboard');
+Route::get('/party/{id}/order', [CustomerController::class, 'show_order_form'])->name('show-order-form')->middleware('auth');
+Route::post('/party/{id}/order', [CustomerController::class, 'place_order'])->name('place-order')->middleware('auth');
+
+//اظهار صفحة تواصل معنا ما بدها تسجيل دخول
+Route::get('/contact', [ContactController::class, 'showContactForm'])->name('contact');
+Route::post('/contact', [ContactController::class, 'submitContactForm'])->name('contact.submit');
+
+Route::prefix('user')->middleware('auth')->group(function (){
+    Route::get('login', [LoginController::class, 'showLoginForm'])->name('user.login');
+    Route::post('login', [LoginController::class, 'login']);
+    Route::post('logout', [LoginController::class, 'logout'])->name('user.logout');
+    Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('user.register');
+    Route::post('register', [RegisterController::class, 'register'])->name('register.submit');
 });
 
-Route::resource('/users',UserController::class);
-Route::resource('/employees',EmployeeController::class);
-Route::resource('/service-reservations', ServiceReservationController::class);
-Route::resource('/orders', OrderController::class);
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['auth'])->name('dashboard');
 
+Route::prefix('admin')->middleware('auth')->group(function (){
+    Route::resource('/users',UserController::class);
+    Route::resource('/employees',EmployeeController::class);
+    Route::resource('/service-reservations', ServiceReservationController::class);
+    Route::resource('/orders', OrderController::class);
+});
+require __DIR__.'/auth.php';

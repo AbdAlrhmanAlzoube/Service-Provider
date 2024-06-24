@@ -10,16 +10,11 @@ class Connect extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+       'email',
+       'phone',
+       'subject_type',
+       'subject',
         'message'
-
     ];
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-
-    }
-
 
 }

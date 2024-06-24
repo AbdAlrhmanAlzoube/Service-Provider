@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\admin\EmployeeController;
+use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\ServiceReservationController;
+use App\Http\Controllers\admin\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +21,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/', function () {
+    return view('admin.dashboard');
+});
+
+Route::resource('/users',UserController::class);
+Route::resource('/employees',EmployeeController::class);
+Route::resource('/service-reservations', ServiceReservationController::class);
+Route::resource('/orders', OrderController::class);

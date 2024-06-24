@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(User::class)->nullable();
             $table->foreignIdFor(ServiceReservation::class);
             $table->integer('price');
             $table->date('delivery_date');
-            $table->string('additional_details');
+            $table->text('additional_details');
             $table->timestamps();
         });
     }

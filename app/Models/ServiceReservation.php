@@ -11,21 +11,14 @@ class ServiceReservation extends Model
     use HasFactory;
 
 
-protected $fillable=[
-    'user_id',
-    'type',
-    'title',
-    'description',
-    'address',
-    'picture_for_clarification'
+    protected $fillable=[
+        'type',
+        'title',
+        'description',
+        'address',
+        'picture',
+        'price',
 
-];
-
-public function user(): BelongsTo
-{
-    return $this->belongsTo(User::class);
-}
-
+    ];
 
 }
- 
