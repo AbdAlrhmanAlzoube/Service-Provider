@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             ServiceReservationSeeder::class,
             OrderSeeder::class,
             EmployeeSeeder::class,
+            ConnectSeeder::class,
         ]);
 
         User::factory()->create([
