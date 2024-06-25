@@ -1,14 +1,16 @@
-<!-- Bootstrap CSS -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
-<!-- Popper.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-<!-- Bootstrap JS -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Party</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Additional CSS for icons and styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
 <div class="site-navbar py-2">
     <div class="container">
         <div class="d-flex align-items-center justify-content-between">
@@ -21,14 +23,13 @@
                 <nav class="site-navigation text-right text-md-center" role="navigation">
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
                         <li class="active"><a href="">Home</a></li>
-                        <li><a href="{{route('view-reservations')}}">Store</a></li>
+                        <li><a href="{{ route('view-reservations') }}">Store</a></li>
                         {{-- <li><a href="{{ route('about') }}">About</a></li> --}}
-                         <li><a href="{{ route('contact') }}">Contact</a></li>
+                        <li><a href="{{ route('contact') }}">Contact</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="icons d-flex align-items-center">
-
                 @guest
                     <a href="{{ route('user.login') }}" class="icons-btn d-inline-block ml-3">
                         <span class="icon-user"></span> Login
@@ -49,6 +50,7 @@
                             </form>
                         </div>
                     </div>
+                    <a href="{{ route('view_order') }}" class="btn btn-primary ml-3">Order</a>
                 @endguest
                 <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
             </div>
@@ -61,8 +63,15 @@
     </div>
 </div>
 
-<!-- Add jQuery if not already included -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<!-- Popper.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Additional jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
     $(document).ready(function () {
         $('.js-search-toggle').on('click', function (e) {
@@ -107,3 +116,5 @@
         padding: 0.5rem 1rem;
     }
 </style>
+</body>
+</html>

@@ -25,14 +25,16 @@ Route::get('/', [CustomerController::class, 'index']);
 Route::get('/shop', [CustomerController::class, 'shop'])->name('view-reservations');
 Route::get('/party/{id}', [CustomerController::class, 'show_party'])->name('show-party');
 
+
 Route::get('/party/{id}/order', [CustomerController::class, 'show_order_form'])->name('show-order-form')->middleware('auth');
 Route::post('/party/{id}/order', [CustomerController::class, 'place_order'])->name('place-order')->middleware('auth');
+Route::get('/view_order', [CustomerController::class, 'viewOrder'])->name('view_order')->middleware('auth');
 
 //اظهار صفحة تواصل معنا ما بدها تسجيل دخول
 Route::get('/contact', [ContactController::class, 'showContactForm'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submitContactForm'])->name('contact.submit');
 
-Route::prefix('user')->middleware('auth')->group(function (){
+Route::prefix('user')->group(function (){
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('user.login');
     Route::post('login', [LoginController::class, 'login']);
     Route::post('logout', [LoginController::class, 'logout'])->name('user.logout');

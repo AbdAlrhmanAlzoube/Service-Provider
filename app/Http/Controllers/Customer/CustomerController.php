@@ -72,4 +72,13 @@ class CustomerController extends Controller
 
         return view('customer.pages.shop', compact('serviceReservations'));
     }
+
+    public function viewOrder()
+    {
+        // Assuming you have an Order model and orders relationship in your User model
+        $user = Auth::user();
+        $orders = $user->orders;
+
+        return view('orders.view_order', compact('orders'));
+    }
 }

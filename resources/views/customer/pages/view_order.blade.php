@@ -1,48 +1,44 @@
-@extends('customer.index')
-
-@section('content')
-    <div class="container">
-        <h2>Order Details</h2>
-
-        <div class="card mb-4">
-            <div class="card-body">
-                <h5 class="card-title">Order #{{ $order->id }}</h5>
-                <p class="card-text"><strong>Date:</strong> {{ $order->date }}</p>
-                <p class="card-text"><strong>Status:</strong> {{ $order->order_status }}</p>
-                <p class="card-text"><strong>Total:</strong> ${{ number_format($order->total, 2) }}</p>
-            </div>
-        </div>
-
-        <h3>User Details</h3>
-        <div class="card mb-4">
-            <div class="card-body">
-                <p class="card-text"><strong>Name:</strong> {{ $user->name }}</p>
-                <p class="card-text"><strong>Email:</strong> {{ $user->email }}</p>
-                <p class="card-text"><strong>Address:</strong> {{ $user->address }}</p>
-                <p class="card-text"><strong>Phone:</strong> {{ $user->phone }}</p>
-            </div>
-        </div>
-
-        <h3>Items</h3>
-        <table class="table">
+<!-- resources/views/orders/view_order.blade.php -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>My Orders</h1>
+    @if($orders->isEmpty())
+        <p>You have no orders.</p>
+    @else
+        <table class="table table-bordered">
             <thead>
             <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Price</th>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Status</th>
                 <th>Total</th>
             </tr>
             </thead>
             <tbody>
-            @foreach($order->orderItems as $item)
+            @foreach($orders as $order)
                 <tr>
-                    <td>{{ $item->product->trading_name }}</td>
-                    <td>{{ $item->quantity_item }}</td>
-                    <td>${{ number_format($item->price_item, 2) }}</td>
-                    <td>${{ number_format($item->quantity_item * $item->price_item, 2) }}</td>
+                    <td>{{ $order->id }}</td>
+                    <td>{{ $order->created_at->format('d-m-Y') }}</td>
+                    <td>{{ $order->status }}</td>
+                    <td>{{ $order->total }}</td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-    </div>
-@endsection
+    @endif
+</div>
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
