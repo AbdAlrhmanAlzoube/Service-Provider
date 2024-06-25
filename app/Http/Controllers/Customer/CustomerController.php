@@ -79,6 +79,6 @@ class CustomerController extends Controller
         $user = Auth::user();
         $orders = $user->orders;
 
-        return view('orders.view_order', compact('orders'));
+        return view('customer.pages.view_order', compact('orders'));
     }
 }

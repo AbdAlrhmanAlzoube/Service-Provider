@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\ConnectController;
 use App\Http\Controllers\admin\EmployeeController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\ServiceReservationController;
@@ -46,10 +47,11 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::prefix('admin')->middleware('auth')->group(function (){
-    Route::resource('/users',UserController::class);
-    Route::resource('/employees',EmployeeController::class);
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
+    Route::resource('/users', UserController::class);
+    Route::resource('/employees', EmployeeController::class);
     Route::resource('/service-reservations', ServiceReservationController::class);
     Route::resource('/orders', OrderController::class);
+    Route::resource('/connects', ConnectController::class);
 });
 require __DIR__.'/auth.php';

@@ -30,7 +30,7 @@ class RegisterController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'type' => 'customer',
+            'type' => 'CUSTOMER',
             'password' => Hash::make($request->password),
         ]);
 
