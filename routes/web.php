@@ -29,6 +29,8 @@ Route::get('/party/{id}', [CustomerController::class, 'show_party'])->name('show
 
 Route::get('/party/{id}/order', [CustomerController::class, 'show_order_form'])->name('show-order-form')->middleware('auth');
 Route::post('/party/{id}/order', [CustomerController::class, 'place_order'])->name('place-order')->middleware('auth');
+
+// مشان اذا المستخدم طلب من عنا قبل مرة يطلعله الاوردر
 Route::get('/view_order', [CustomerController::class, 'viewOrder'])->name('view_order')->middleware('auth');
 
 //اظهار صفحة تواصل معنا ما بدها تسجيل دخول
