@@ -14,7 +14,7 @@ class UserController extends Controller
     // بتجيب كل شي بيانات من الداتا بيز
     public function index()
     {
-        $users = User::all();
+        $users = User::paginate(15);
 
         return view('admin.pages.users.index', compact('users'));
     }
@@ -63,6 +63,11 @@ class UserController extends Controller
     {
         $validatedData = $request->validated();
 
+        // Upload image if provided
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images/users', 'public');
+            $validatedData['image'] = $imagePath;
+        }
         // Update user data
         $user->update($validatedData);
 

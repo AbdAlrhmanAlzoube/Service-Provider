@@ -12,7 +12,7 @@
                             <label for="user_id">User</label>
                             <select name="user_id" id="user_id" class="form-control">
                                 @foreach($users as $user)
-                                    <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{ $user->first_name }} {{$user->last_name}}</option>
+                                    <option value="{{ $user->id }}" {{ old('user_id') == $user->id ? 'selected' : '' }}>{{ $user->first_name }} {{ $user->last_name }}</option>
                                 @endforeach
                             </select>
                             @error('user_id')
@@ -34,6 +34,24 @@
                             <label for="price">Price</label>
                             <input type="number" name="price" id="price" class="form-control" value="{{ old('price') }}">
                             @error('price')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" name="address" id="address" class="form-control" value="{{ old('address') }}">
+                            @error('address')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select name="status" id="status" class="form-control">
+                                @foreach(App\Enum\OrderStatusType::cases() as $status)
+                                    <option value="{{ $status->value }}" {{ old('status') == $status->value ? 'selected' : '' }}>{{ $status->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('status')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>

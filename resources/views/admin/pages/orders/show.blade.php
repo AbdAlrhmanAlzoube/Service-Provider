@@ -25,6 +25,14 @@
                     <strong>Additional Details:</strong>
                     <p>{{ $order->additional_details }}</p>
                 </div>
+                <div class="mb-3">
+                    <strong>Status</strong>
+                    <p>{{ $order->status }}</p>
+                </div>
+                <div class="mb-3">
+                    <strong>Address</strong>
+                    <p>{{ $order->address }}</p>
+                </div>
             </div>
             <div class="card-footer">
                 <a href="{{ route('orders.index') }}" class="btn btn-primary">Back to List</a>

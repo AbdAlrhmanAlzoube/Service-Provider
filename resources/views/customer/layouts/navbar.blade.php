@@ -16,16 +16,18 @@
         <div class="d-flex align-items-center justify-content-between">
             <div class="logo">
                 <div class="site-logo">
-                    <a href="" class="js-logo-clone">Party</a>
+                    <img src="{{ asset('customer/images/logo.png') }}" alt="Picture" style="max-width: 10%; height: auto; margin-right: 5px">
+                    <a href="" class="js-logo-clone font">Elegant Event</a>
                 </div>
             </div>
             <div class="main-nav d-none d-lg-block">
                 <nav class="site-navigation text-right text-md-center" role="navigation">
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
-                        <li class="active"><a href="">Home</a></li>
+                        <li class="active"><a href="{{url('/')}}">Home</a></li>
                         <li><a href="{{ route('view-reservations') }}">Store</a></li>
                         {{-- <li><a href="{{ route('about') }}">About</a></li> --}}
                         <li><a href="{{ route('contact') }}">Contact</a></li>
+                        <a href="{{ route('evaluation') }}">Reviews</a>
                     </ul>
                 </nav>
             </div>
@@ -40,7 +42,6 @@
                             <span class="icon-user"></span> {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">Profile</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Logout
@@ -50,7 +51,7 @@
                             </form>
                         </div>
                     </div>
-                    <a href="{{ route('view_order') }}" class="btn btn-primary ml-3">Order</a>
+                    <a href="{{ route('view_order') }}" class="btn btn-primary ">Order</a>
                 @endguest
                 <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
             </div>

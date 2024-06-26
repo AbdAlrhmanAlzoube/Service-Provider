@@ -13,7 +13,7 @@ class ServiceReservationController extends Controller
 {
     public function index()
     {
-        $serviceReservations = ServiceReservation::with('user')->get();
+        $serviceReservations = ServiceReservation::get();
 
         return view('admin.pages.service_reservations.index', compact('serviceReservations'));
     }

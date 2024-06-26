@@ -19,6 +19,10 @@
                     <label for="additional_details">Additional Details</label>
                     <textarea class="form-control" id="additional_details" name="additional_details" rows="3"></textarea>
                 </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" name="address" required>
+                </div>
                 <button type="submit" class="btn btn-primary">Order</button>
             </form>
         </div>

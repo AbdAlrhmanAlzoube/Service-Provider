@@ -37,6 +37,11 @@ Route::get('/view_order', [CustomerController::class, 'viewOrder'])->name('view_
 Route::get('/contact', [ContactController::class, 'showContactForm'])->name('contact');
 Route::post('/contact', [ContactController::class, 'submitContactForm'])->name('contact.submit');
 
+// لاضافة التقيمات
+Route::post('/order/{order}/evaluate', [CustomerController::class, 'submitEvaluation'])->name('submit-evaluation')->middleware('auth');
+
+Route::view('/evaluation','customer.pages.evaluation')->name('evaluation');
+
 Route::prefix('user')->group(function (){
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('user.login');
     Route::post('login', [LoginController::class, 'login']);

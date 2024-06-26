@@ -20,13 +20,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'), // Change 'password' to desired admin password
             'type' => 'ADMIN',
         ]);
-        User::create([
-            'first_name' => 'Admin',
-            'last_name' => 'User',
-            'email' => 'admin@admin.com',
-            'phone' => '123456789',
-            'password' => Hash::make('password'), // Change 'password' to desired admin password
-            'type' => 'ADMIN',
-        ]);
+
     }
 }

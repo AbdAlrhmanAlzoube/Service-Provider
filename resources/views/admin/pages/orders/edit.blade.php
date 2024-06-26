@@ -6,14 +6,14 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Edit Order</h4>
-                    <form class="forms-sample" action="{{ route('orders.update', $order) }}" method="POST">
+                    <form class="forms-sample" action="{{ route('orders.update', $order->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <label for="user_id">User</label>
                             <select name="user_id" id="user_id" class="form-control">
                                 @foreach($users as $user)
-                                    <option value="{{ $user->id }}" {{ old('user_id', $order->user_id) == $user->id ? 'selected' : '' }}>{{ $user->first_name }} {{ $user->last_name }}</option>
+                                    <option value="{{ $user->id }}" {{ $order->user_id == $user->id ? 'selected' : '' }}>{{ $user->first_name }} {{ $user->last_name }}</option>
                                 @endforeach
                             </select>
                             @error('user_id')
@@ -24,7 +24,7 @@
                             <label for="service_reservation_id">Service Reservation</label>
                             <select name="service_reservation_id" id="service_reservation_id" class="form-control">
                                 @foreach($serviceReservations as $serviceReservation)
-                                    <option value="{{ $serviceReservation->id }}" {{ old('service_reservation_id', $order->service_reservation_id) == $serviceReservation->id ? 'selected' : '' }}>{{ $serviceReservation->title }}</option>
+                                    <option value="{{ $serviceReservation->id }}" {{ $order->service_reservation_id == $serviceReservation->id ? 'selected' : '' }}>{{ $serviceReservation->title }}</option>
                                 @endforeach
                             </select>
                             @error('service_reservation_id')
@@ -35,6 +35,24 @@
                             <label for="price">Price</label>
                             <input type="number" name="price" id="price" class="form-control" value="{{ old('price', $order->price) }}">
                             @error('price')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" name="address" id="address" class="form-control" value="{{ old('address', $order->address) }}">
+                            @error('address')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>
+                            <select name="status" id="status" class="form-control">
+                                @foreach(App\Enum\OrderStatusType::cases() as $status)
+                                    <option value="{{ $status->value }}" {{ $order->status == $status->value ? 'selected' : '' }}>{{ $status->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('status')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>

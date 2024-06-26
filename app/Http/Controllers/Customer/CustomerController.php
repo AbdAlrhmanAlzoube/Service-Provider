@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Evaluation;
 use App\Models\Order;
 use App\Models\ServiceReservation;
 use Illuminate\Http\Request;
@@ -42,6 +43,7 @@ class CustomerController extends Controller
         $request->validate([
             'delivery_date' => 'required|date|after:today',
             'additional_details' => 'nullable|string',
+            'address' => 'nullable|string',
         ]);
 
         $serviceReservation = ServiceReservation::findOrFail($id);
@@ -52,6 +54,7 @@ class CustomerController extends Controller
             'price' => $serviceReservation->price,
             'delivery_date' => $request->delivery_date,
             'additional_details' => $request->additional_details,
+            'address' => $request->address,
         ]);
         return view('customer.pages.thankyou');
     }
@@ -79,6 +82,7 @@ class CustomerController extends Controller
         $user = Auth::user();
         $orders = $user->orders;
 
-        return view('customer.pages.view_order', compact('orders'));
+        return view('customer.pages.view_order', compact('orders','user'));
     }
+
 }

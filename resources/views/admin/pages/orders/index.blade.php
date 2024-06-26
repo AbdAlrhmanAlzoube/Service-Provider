@@ -20,6 +20,8 @@
                                 <th>Price</th>
                                 <th>Delivery Date</th>
                                 <th>Additional Details</th>
+                                <th>Status</th>
+                                <th>Address</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -31,6 +33,8 @@
                                     <td>{{ $order->price }}</td>
                                     <td>{{ $order->delivery_date }}</td>
                                     <td>{{ $order->additional_details }}</td>
+                                    <td>{{ $order->status }}</td>
+                                    <td>{{ $order->address }}</td>
                                     <td>
                                         <a href="{{ route('orders.show', $order) }}" class="btn btn-info btn-sm">View</a>
                                         <a href="{{ route('orders.edit', $order) }}" class="btn btn-warning btn-sm">Edit</a>

@@ -27,8 +27,8 @@
                 </div>
                 <div class="mb-3">
                     <strong>Picture</strong>
-                    @if($serviceReservation->picture_for_clarification)
-                        <img src="{{ asset('storage/' . $serviceReservation->picture_for_clarification) }}" alt="Picture" style="max-width: 100%; height: auto;">
+                    @if($serviceReservation->picture)
+                        <img src="{{ asset('storage/' . $serviceReservation->picture) }}" alt="Picture" style="max-width: 30%; height: auto;">
                     @else
                         <p>No picture provided</p>
                     @endif

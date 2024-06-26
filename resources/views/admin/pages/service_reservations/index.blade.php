@@ -31,8 +31,9 @@
                                     <td>{{ $serviceReservation->description }}</td>
                                     <td>{{ $serviceReservation->address }}</td>
                                     <td>
-                                        @if($serviceReservation->picture_for_clarification)
-                                            <img src="{{ asset('storage/' . $serviceReservation->picture_for_clarification) }}" alt="Picture" style="width: 50px; height: 50px;">
+
+                                        @if($serviceReservation->picture)
+                                            <img src="{{ asset('storage/' . $serviceReservation->picture) }}" alt="Picture" style="width: 50px; height: 50px;">
                                         @endif
                                     </td>
                                     <td>

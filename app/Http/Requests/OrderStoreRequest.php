@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enum\OrderStatusType;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Enum;
 
 class OrderStoreRequest extends FormRequest
 {
@@ -16,9 +18,11 @@ class OrderStoreRequest extends FormRequest
         return [
             'user_id' => 'required|exists:users,id',
             'service_reservation_id' => 'required|exists:service_reservations,id',
-            'price' => 'required|integer',
-            'delivery_date' => 'required|date',
-            'additional_details' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+            'delivery_date' => 'required|date|after:today',
+            'additional_details' => 'nullable|string',
+            'address' => 'nullable|string',
+            'status' => ['required', new Enum(OrderStatusType::class)],
         ];
     }
 }

@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-7 mx-auto order-lg-2 align-self-center">
                     <div class="site-block-cover-content text-center">
-                        <h1>Welcome To Party</h1>
+                        <h1>Elegant Event</h1>
                         <p>
                             <a href="{{route('view-reservations')}}" class="btn btn-primary px-5 py-3">Shop Now</a>
                         </p>
@@ -58,7 +58,7 @@
         <div class="container">
             <div class="row">
                 <div class="title-section text-center col-12">
-                    <h2 class="text-uppercase">Popular Party</h2>
+                    <h2 class="text-uppercase">Our Services</h2>
                 </div>
             </div>
             <div class="row">

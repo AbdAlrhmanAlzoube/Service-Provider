@@ -1,5 +1,6 @@
 <?php
 
+use App\Enum\OrderStatusType;
 use App\Models\ServiceReservation;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -18,8 +19,10 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->nullable();
             $table->foreignIdFor(ServiceReservation::class);
             $table->integer('price');
+            $table->string('status')->default(OrderStatusType::PADDING->value);
             $table->date('delivery_date');
             $table->text('additional_details');
+            $table->string('address')->nullable();
             $table->timestamps();
         });
     }

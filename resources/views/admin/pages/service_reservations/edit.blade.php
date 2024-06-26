@@ -36,10 +36,10 @@
                             <input type="text" name="address" id="address" class="form-control" value="{{ old('address', $serviceReservation->address) }}">
                         </div>
                         <div class="form-group">
-                            <label for="picture_for_clarification">Picture for Clarification</label>
-                            <input type="file" name="picture_for_clarification" id="picture_for_clarification" class="form-control">
-                            @if($serviceReservation->picture_for_clarification)
-                                <img src="{{ asset('storage/' . $serviceReservation->picture_for_clarification) }}" alt="Picture" style="max-width: 100%; height: auto;">
+                            <label for="picture">Picture</label>
+                            <input type="file" name="picture" id="picture" class="form-control">
+                            @if($serviceReservation->picture)
+                                <img src="{{ asset('storage/' . $serviceReservation->picture) }}" alt="Picture" style="max-width: 100%; height: auto;">
                             @endif
                         </div>
                         <button type="submit" class="btn btn-success">Update</button>

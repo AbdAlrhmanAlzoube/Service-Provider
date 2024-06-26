@@ -18,7 +18,7 @@ class UserUpdateRequest extends FormRequest
             'first_name' => 'string|max:255',
             'last_name' => 'string|max:255',
             'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // example image validation
-            'email' => 'email|unique:users,email',
+            'email' => 'email|string',
             'password' => 'string|min:8',
             'type' => 'string|max:255',
         ];
